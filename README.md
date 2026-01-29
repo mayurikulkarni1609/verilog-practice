@@ -1,13 +1,16 @@
-# 2:1 Multiplexer in Verilog
+# Verilog Practice
 
-This repository contains the Verilog implementation of a 2:1 multiplexer
-along with a testbench for functional verification.
+This repository contains my Verilog practice designs and testbenches
+as I learn digital design and HDL-based simulation.
 
-## Files
-- mux21.v        : 2:1 MUX design
+Each module includes:
+- RTL Verilog code
+- A corresponding testbench
+- Simulation waveform screenshots (GTKWave)
+
+## Current Designs
+
+### 2:1 Multiplexer
+- mux21.v        : RTL design
 - tb_mux21.v     : Testbench
 - waveform_mux21.png : Simulation waveform
-
-## Tools
-- Icarus Verilog
-- GTKWave
