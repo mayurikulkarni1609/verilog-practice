@@ -25,9 +25,10 @@ always@(posedge clk or posedge reset)
 always@(*)
   begin
     case(current_state)
-      RED: next_state = (count==4'd10) ? GREEN : RED;
-      GREEN : next_state = (count==4'd10) ? YELLOW  : GREEN;
-      YELLOW: next_state = (count==4'd5) ? RED : YELLOW;
+    // 10 counts (cycles) for red and green. 5 counts for yellow
+      RED: next_state = (count==4'd9) ? GREEN : RED;        
+      GREEN : next_state = (count==4'd9) ? YELLOW  : GREEN;    
+      YELLOW: next_state = (count==4'd4) ? RED : YELLOW;
       default: next_state = RED;
     endcase
   end
