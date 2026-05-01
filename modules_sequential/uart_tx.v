@@ -34,7 +34,7 @@ always @(*) begin
     endcase
 end
 
-always @(*) begin  // combinational. so that tx updates immediately
+always @(*) begin  // output block combinational. So that tx updates immediately
     case (current_state)
         IDLE:  tx = 1;
         START: tx = 0;
@@ -43,31 +43,28 @@ always @(*) begin  // combinational. so that tx updates immediately
     endcase
 end
 
-// Output + counter
+// counter block
 always @(posedge clk or posedge reset) begin
     if (reset) begin
-        tx <= 1;
         bit_count <= 0;
     end else begin
         case (current_state)
             IDLE: begin
-                tx <= 1;
                 bit_count <= 0;
             end
 
             START: begin
-                tx <= 0;
                 bit_count<=0;
             end
 
             DATA: begin
-                tx <= data[bit_count]; // data changing according to bit count
+
                 bit_count <= bit_count + 1;
                 
             end
 
             STOP: begin
-                tx <= 1;
+                bit_count <= 0;
             end
         endcase
     end
