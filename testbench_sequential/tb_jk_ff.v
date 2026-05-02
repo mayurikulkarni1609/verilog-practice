@@ -17,9 +17,9 @@ initial
      j = 0; k = 0; #10;
      j = 0; k = 1; #10;
      j = 1; k = 0; #10;
-     j = 1; k = 1; #10;
+     j = 1; k = 1; #65;
      reset = 1; #25;
-     j = 1; k = 1; #10;
+     j = 0; k = 0; #10;
      $finish;
    end
 endmodule
