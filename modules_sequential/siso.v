@@ -1,9 +1,9 @@
-module siso (#parameter n = 4)
+module siso #(parameter n = 4)
 (
   input clk, reset,
   input  serial_in,
   output reg [n-1:0]q,
-  output serial_out
+  output reg serial_out
 );
 always@(posedge clk or posedge reset)
    begin
