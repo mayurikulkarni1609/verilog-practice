@@ -13,8 +13,14 @@ always@(posedge clk or posedge reset)
      q  <= parallel_in;
      else
        begin
-          serial_out <= q[0];
-          q >> 1;
+          genvar i;
+          generate
+            for(i=n; i>0; i=i-1)
+              begin
+                serial_out <= q[0];
+                q >> 1;
+              end
+          endgenerate
        end
    end
 endmodule
