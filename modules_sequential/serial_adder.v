@@ -6,7 +6,7 @@ module serial_adder
     output reg done
 );
 
-  reg current_state, next_state;
-  reg [3:0]count;
+  reg [1:0]count;
   wire shift;
-  wire x, y, 
+  wire x, y, sum, c_out;
+  reg carry; //this is the D flip-flop
