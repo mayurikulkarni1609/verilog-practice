@@ -12,6 +12,7 @@ module serial_adder
   wire sum, c_out;
   reg carry; //this is the D flip-flop
   wire x, y;
+  wire clock;
   assign sum = x^y^carry;
   assign c_out = (x&y) | (y&carry) | (x&carry);
   assign x = acc[0];
