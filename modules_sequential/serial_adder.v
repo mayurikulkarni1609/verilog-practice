@@ -1,6 +1,6 @@
 module serial_adder
 (
-    input clk, reset, start, 
+    input clk, reset, start, shift
     input [3:0]a, b,
     output reg [3:0]result,
     output reg done
@@ -12,12 +12,17 @@ module serial_adder
   wire sum, c_out;
   reg carry; //this is the D flip-flop
   wire x, y;
-  wire clock;
+  reg clock;
   assign sum = x^y^carry;
   assign c_out = (x&y) | (y&carry) | (x&carry);
   assign x = acc[0];
   assign y = addend[0];
   
+  always@(posedge clock)
+     begin
+       carry <= c_out&(~clock) | clock&(~c_out);
+       clock <= shift&clk;
+     end
 
     always@(posedge clk or posedge reset)
        begin
